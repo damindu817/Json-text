@@ -1,0 +1,29 @@
+{
+  "lastUpdated": "2025-05-17T04:43:27.412614Z",
+  "signals": [
+    {
+      "time": "11:05",
+      "duration": 30,
+      "odds": "5×",
+      "color": "#ff6600"
+    },
+    {
+      "time": "11:45:15",
+      "duration": 45,
+      "odds": "3 6 9",
+      "days": [
+        "Mon",
+        "Wed",
+        "Fri",
+        "Sat"
+      ],
+      "color": "#00ff99"
+    },
+    {
+      "time": "12:30:00",
+      "duration": 60,
+      "odds": "7×",
+      "color": "#3399ff"
+    }
+  ]
+}
