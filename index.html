@@ -283,9 +283,8 @@
       color: #000;
     }
     .update-notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
+      position: relative;
+      margin: 10px auto;
       background: rgba(0,0,0,0.8);
       color: white;
       padding: 10px 15px;
@@ -295,6 +294,8 @@
       z-index: 1000;
       display: none;
       animation: fadeInOut 3s ease-in-out;
+      width: fit-content;
+      max-width: 80%;
     }
     @keyframes fadeInOut {
       0%, 100% { opacity: 0; transform: translateY(10px); }
@@ -314,14 +315,14 @@
         </div>
       </div>
     </div>
-    <div class="odd-display" id="oddText">Initializing prediction system...</div>
+    <div class="odd-display" id="oddText">Calculating optimal odds...</div>
     <div class="buttons">
       <a href="#" class="whatsapp">Join WhatsApp</a>
       <a href="#" class="telegram">Join Telegram</a>
     </div>
+    <div class="update-notification" id="updateNotification"></div>
   </div>
   <footer>POWERED BY XTREME PREDICTOR</footer>
-  <div class="update-notification" id="updateNotification"></div>
 
   <script>
     // DOM අංග
@@ -459,7 +460,7 @@
         return {
           startTime,
           endTime,
-          displayTime: `${signal.time}-${endTime.getHours()}:${endTime.getMinutes().toString().padStart(2, '0')}`,
+          displayTime: `${signal.time} - ${endTime.getHours()}:${endTime.getMinutes().toString().padStart(2, '0')}`,
           odd: signal.odds,
           color: signal.color,
           isDynamic: true
@@ -504,7 +505,7 @@
             startTime,
             endTime,
             displayTime: signal.end ? 
-              `${currentHour.toString().padStart(2, '0')}:${signal.start}-${currentHour.toString().padStart(2, '0')}:${signal.end}` :
+              `${currentHour.toString().padStart(2, '0')}:${signal.start} - ${currentHour.toString().padStart(2, '0')}:${signal.end}` :
               `${currentHour.toString().padStart(2, '0')}:${signal.start}`,
             odd: signal.odd,
             isDynamic: false
@@ -538,7 +539,7 @@
           <div class="loading-text">Analyzing game<br>patterns<span class="loading-dots"></span></div>
         </div>
       `;
-      oddEl.textContent = "Analyzing patterns...";
+      oddEl.textContent = "Calculating optimal odds...";
     }
 
     // වේලාව ආකෘතියට සකස් කිරීම
@@ -575,7 +576,7 @@
       // තත්වය අනුව ක්‍රියා කිරීම
       if (state.currentState === 'initial-loading') {
         if (Date.now() - state.loadingStart < CONFIG.LOADING_DURATION) {
-          oddEl.textContent = 'Initializing prediction system...';
+          oddEl.textContent = 'Calculating optimal odds...';
         } else {
           state.currentState = 'waiting';
         }
@@ -654,4 +655,4 @@
     init();
   </script>
 </body>
-  </html>
+</html>
